@@ -11,7 +11,7 @@ class Game:
     def __init__(self) -> None:
         ''' Constructor '''
 
-        self.screen = Screen(500, 500, "test")
+        self.screen = Screen(500, 800, "test")
         self.running = True
 
     def run(self) -> None:
@@ -21,7 +21,7 @@ class Game:
 
         while self.running:
             self.handle_events()
-            self.screen.fill((0, 0, 0))  # Color negro test
+            self.screen.fill()
             self.screen.update()
 
     def handle_events(self) -> None:
@@ -40,3 +40,4 @@ if __name__ == '__main__':
     # Instanciar el juego y correrlo
     game = Game()
     game.run()
+

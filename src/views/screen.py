@@ -19,7 +19,7 @@ class Screen:
 
         pygame.display.flip()
 
-    def fill(self,  color: tuple) -> None:
+    def fill(self,  color: tuple = (47, 113, 105)) -> None:
         ''' Metodo para rellenar la superficie con un color '''
 
         self.surface.fill(color)

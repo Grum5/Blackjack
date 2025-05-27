@@ -5,7 +5,6 @@ from src.models.prng.henon import Henon
 class Deck:
     '''
         Modelo para el Deck de las cartas
-        ¡¡¡ Falta implementar metodo shuffle !!!
     '''
 
     def __init__(self, prng: Henon):
@@ -13,7 +12,7 @@ class Deck:
 
         self.prng = prng
         self.cards = self._create_deck()
-        # self.shuffle()
+        self.shuffle()
 
     def _create_deck(self):
         '''
@@ -28,3 +27,21 @@ class Deck:
             '10', 'J', 'Q', 'K'
         ]
         return [Card(value, suit) for suit in suits for value in values]
+
+    def shuffle(self) -> None:
+        '''
+            Metodo para revolver las cartas del deck
+        '''
+
+        for i in range(len(self.cards)):
+            # Se obtiene un numero pseudoaletorio
+            pseudonumber, _ = self.prng.get_pseudonumber()
+
+            # Se normaliza para trabajar con el
+            pseudo_normalized = (pseudonumber + 1.5) / 3.0
+            j = int(pseudo_normalized * len(self.cards))
+            j = max(0, min(j, len(self.cards) - 1))
+
+            # Se revuelven las cartas
+            self.cards[i], self.cards[j] = self.cards[j], self.cards[i]
+

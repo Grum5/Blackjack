@@ -17,7 +17,7 @@ class Henon:
         # Listas donde se almacenaran los datos del modelo
         self.x_array, self.y_array = [], []
 
-    def get_pseudonumber(self) -> tuple(float, float):
+    def get_pseudonumber(self) -> tuple[float, float]:
         '''
             Generación de un numero pseudoaleatorio
             - Retorna una tupla de numeros pseudoaleatorio de tipo flotante

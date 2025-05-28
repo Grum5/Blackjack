@@ -15,16 +15,16 @@ class Renderer:
         self.card_render = []
         self.spacing = 100
         self.y_player = 600
-        self.y_dealer = 100
+        self.y_dealer = -100
 
     def draw_hand(self, name: str, hand: object) -> None:
         ''' Metodo para dibujar una mano en pantalla '''
 
-        if name == "Dealer":
+        if name == "dealer":
             face_up = False
             y_pos = self.y_dealer
 
-        else:
+        elif name == "player":
             face_up = True
             y_pos = self.y_player
 

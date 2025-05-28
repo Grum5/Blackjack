@@ -20,7 +20,7 @@ class Player:
 
         self.hand.clear()
 
-    def get_score(self) -> None:
+    def get_score(self) -> int:
         ''' Obtiene el valor de la mano '''
 
         return self.hand.get_value()

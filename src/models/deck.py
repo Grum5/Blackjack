@@ -1,5 +1,5 @@
 from src.models.card import Card
-from src.models.prng.henon import Henon
+from src.controllers.seed_generator import SeedGenerator
 
 
 class Deck:
@@ -7,18 +7,12 @@ class Deck:
         Modelo para el Deck de las cartas
     '''
 
-    def __init__(self, prng: Henon):
+    def __init__(self, prng: SeedGenerator) -> None:
         ''' Constructor '''
 
         self.prng = prng
-        self.cards = self._create_deck()
-        self.shuffle()
-
-    @property
-    def is_empty(self) -> bool:
-        ''' Property para verificar que el mazo no este vacio '''
-
-        return len(self.cards) == 0
+        self.cards = []
+        self._create_deck()
 
     def reset(self) -> None:
         ''' Metodo para reiniciar el mazo '''
@@ -26,7 +20,7 @@ class Deck:
         self._create_deck()
         self.shuffle()
 
-    def _create_deck(self):
+    def _create_deck(self) -> None:
         '''
             Metodo privado
             - Crea el deck de cartas
@@ -38,14 +32,17 @@ class Deck:
             '7', '8', '9',
             '10', 'J', 'Q', 'K'
         ]
-        return [Card(value, suit) for suit in suits for value in values]
+
+        for suit in suits:
+            for value in values:
+                self.cards.append(Card(value, suit))
 
     def shuffle(self) -> None:
         ''' Metodo para revolver las cartas del deck '''
 
         for i in range(len(self.cards)):
             # Se obtiene un numero pseudoaletorio
-            pseudonumber, _ = self.prng.get_pseudonumber()
+            pseudonumber, _ = self.prng.get_seed()
 
             # Se normaliza para trabajar con el
             pseudo_normalized = (pseudonumber + 1.5) / 3.0
@@ -60,4 +57,11 @@ class Deck:
 
         if self.cards:
             return self.cards.pop()
+
         raise IndexError("El mazo esta vacio.")
+
+    @property
+    def is_empty(self) -> bool:
+        ''' Property para verificar que el mazo no este vacio '''
+
+        return len(self.cards) == 0

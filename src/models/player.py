@@ -4,7 +4,7 @@ from src.models.hand import Hand
 
 class Player:
 
-    def __init__(self, name: str = "Player") -> None:
+    def __init__(self, name: str = "player") -> None:
         ''' Constructor '''
 
         self.name = name

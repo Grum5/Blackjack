@@ -33,7 +33,7 @@ class SeedGenerator:
 
         # Detectamos estancamiento en x_new o y_new
         if self._is_stuck(x_new) or self._is_stuck(y_new):
-            print("[SeedGenerator] Estancamiento detectado. Regenerando semilla...")
+            print("Estancamiento detectado. Regenerando semilla...")
 
             # Obtenemos tiempo actual en segundos para variar iteraciones
             t = int(time.time())

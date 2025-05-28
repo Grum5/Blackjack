@@ -15,7 +15,7 @@ class Game:
 
     def __init__(self) -> None:
         ''' Constructor '''
-        
+
         # Inicializar pygame y sus módulos
         pygame.init()
 
@@ -36,7 +36,9 @@ class Game:
         pygame.mouse.set_visible(False)
 
         self.running = True
-        self.game_state = "waiting"  # Estados: waiting, player_turn, dealer_turn, game_over
+
+        # Estados: waiting, player_turn, dealer_turn, game_over
+        self.game_state = "waiting"
 
     def run(self) -> None:
         '''
@@ -57,7 +59,7 @@ class Game:
 
             # Renderiza el estado actual del juego
             self.renderer.render_all(
-                self.player, self.dealer, self.round_controller.deck, 
+                self.player, self.dealer, self.round_controller.deck,
                 self.game_state, self.round_controller.winner
             )
 

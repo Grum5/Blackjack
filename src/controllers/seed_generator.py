@@ -20,6 +20,7 @@ class SeedGenerator:
 
     def _is_stuck(self, value, threshold=1e-6):
         # Verifica si value está estancado comparándolo con valores previos
+
         return any(abs(value - v) < threshold for v in self._last_values)
 
     def get_seed(self):

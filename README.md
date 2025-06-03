@@ -38,7 +38,6 @@ Los resources utilizados tiene su propia licencia descrita a continuación.
 Desarrollado como parte de una tarea del curso de **Simulación**, por:
 - Grum5
 - JoskaSF
-- Sailikeapro
 
 ## 🎨 Recursos gráficos
 
